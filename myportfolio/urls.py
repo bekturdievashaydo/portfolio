@@ -14,12 +14,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import pathь
+
 
 from django.contrib import admin
 from django.urls import path,include
-
+from django.views.i18n import set_language
 from django.views.static import serve
 from django.urls import re_path
 from django.conf import settings
@@ -29,11 +28,12 @@ urlpatterns = [
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     path('admin/', admin.site.urls),
 ]
-from django.contrib import admin
-from django.urls import path, include
+
 from home.views import *   # Home sahifasi uchun view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
 ]
+
+

@@ -36,8 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',
-    'djangorestframework'
+    'home'
+
 
 ]
 
@@ -115,6 +115,20 @@ USE_I18N = True
 USE_TZ = True
 
 
+LANGUAGES = {
+    ('uz','Uzbek'),
+    ('ru','Russian'),
+    ('en','English'),
+}
+
+
+LOCALE_PATH = [
+    BASE_DIR/'locale',
+]
+
+
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 MEDIA_URL = 'media/'
@@ -125,6 +139,21 @@ if DEBUG:
 else:
     STATIC_ROOT = str(BASE_DIR / 'static/')
 MEDIA_ROOT = str(BASE_DIR / 'media/')
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_PASSWORD = 'dhzjhaukgebvzhuj'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = 'bekturdiyevashaydo9@gmail.com'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+
+
+
 
 
 # Default primary key field type

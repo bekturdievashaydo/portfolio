@@ -1,0 +1,195 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-02 14:01+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\templates\index.html:102
+msgid "Home"
+msgstr "HOME"
+
+#: .\templates\index.html:109
+msgid "About me"
+msgstr "ABOUT ME"
+
+#: .\templates\index.html:116
+msgid "my Portfolio"
+msgstr "MY PORTFOLIO"
+
+#: .\templates\index.html:123
+msgid "GET IN TOUCH"
+msgstr "GET IN TOUCH"
+
+#: .\templates\index.html:130
+msgid "Blog"
+msgstr "BLOG"
+
+#: .\templates\index.html:173
+msgid "Backend dasturchi"
+msgstr "Backend Developer"
+
+#: .\templates\index.html:174 .\templates\index.html:237
+msgid "Mustaqil ishchi"
+msgstr "Freelancer"
+
+#: .\templates\index.html:178
+msgid ""
+"Men freelancer backend dasturchi sifatida ishlayman. Yaxshi tuzilgan kodlar "
+"va samarali tizimlar\n"
+"                        orqali kuchli va ishonchli veb-ilovalar yaratishga "
+"intilaman"
+msgstr ""
+"I work as a freelance backend developer. I strive to create strong and "
+"reliable web applications through well-structured code and efficient systems."
+
+#: .\templates\index.html:207
+msgid ""
+"I'm a Freelance UI/UX Designer and Developer based in London,\n"
+"                            England. I strives to build immersive and "
+"beautiful web applications through carefully\n"
+"                            crafted code and user-centric design."
+msgstr ""
+"I'm a freelance UI/UX designer and developer based in London. "
+"I strive to build immersive and beautiful web applications through "
+"carefully crafted code and user-centric design."
+
+#: .\templates\index.html:215
+msgid "Ism"
+msgstr "Name"
+
+#: .\templates\index.html:218
+msgid "Familiya"
+msgstr "Surname"
+
+#: .\templates\index.html:221
+msgid "Tug'ilgan sana"
+msgstr "Date of Birth"
+
+#: .\templates\index.html:224
+msgid "Millati"
+msgstr "Nationality"
+
+#: .\templates\index.html:227
+msgid "Tajriba"
+msgstr "Experience"
+
+#: .\templates\index.html:230
+msgid "Manzil"
+msgstr "Address"
+
+#: .\templates\index.html:240
+msgid "Til"
+msgstr "Language"
+
+#: .\templates\index.html:255
+msgid "Yuklab olish"
+msgstr "Download"
+
+#: .\templates\index.html:378
+msgid "a few recent design and coding projects. Want to see more? Email me."
+msgstr "A few recent design and coding projects. Want to see more? Email me."
+
+#: .\templates\index.html:391 .\templates\index.html:431
+#: .\templates\index.html:441 .\templates\index.html:451
+msgid "Image Format"
+msgstr "Image Format"
+
+#: .\templates\index.html:401 .\templates\index.html:540
+msgid "Youtube Format"
+msgstr "YouTube Format"
+
+#: .\templates\index.html:411
+msgid "Sider Format"
+msgstr "Slider Format"
+
+#: .\templates\index.html:421
+msgid "Video Format"
+msgstr "Video Format"
+
+#: .\templates\index.html:498 .\templates\index.html:543
+msgid "Project"
+msgstr "Project"
+
+#: .\templates\index.html:499 .\templates\index.html:544
+msgid "Website"
+msgstr "Website"
+
+#: .\templates\index.html:502
+msgid "Envato"
+msgstr "Envato"
+
+#: .\templates\index.html:505
+msgid " Duration "
+msgstr "Duration"
+
+#: .\templates\index.html:506
+msgid "3 months"
+msgstr "3 months"
+
+#: .\templates\index.html:509
+msgid "Technologies"
+msgstr "Technologies"
+
+#: .\templates\index.html:512
+msgid "Budget"
+msgstr "Budget"
+
+#: .\templates\index.html:516
+msgid "preview"
+msgstr "Preview"
+
+#: .\templates\index.html:520
+msgid "Close"
+msgstr "Close"
+
+#: .\templates\index.html:926
+msgid "Ijtimoiy tarmoq profillari"
+msgstr "Social Media Profiles"
+
+#: .\templates\index.html:944
+msgid ""
+" Agar sizda biron-bir taklif, loyiha g‘oyasi bo‘lsa yoki shunchaki salom "
+"aytmoqchi\n"
+"                                bo‘lsangiz, quyidagini to'ldiring\n"
+"                                men tez orada sizga javob beraman!"
+msgstr ""
+"If you have any suggestions, project ideas, or just want to say hello, "
+"fill out the form below. "
+"I will get back to you soon!"
+
+#: .\templates\index.html:991
+msgid "Veb-dizayn va ishlab chiqish bo‘yicha maslahatlar, tushunchalar va eng yaxshi tajribalar"
+msgstr "Tips, insights, and best practices for web design and development."
+
+#: .\templates\index.html:1009
+msgid "create a wordpress theme from scratch"
+msgstr "Create a WordPress theme from scratch"
+
+#: .\templates\index.html:1035
+msgid "samarali merketing strategiyasi boyicha maslahatlar"
+msgstr "Tips for effective marketing strategy"
+
+#: .\templates\index.html:1061
+msgid "free psd and sketch ressouces"
+msgstr "Free PSD and Sketch resources"
+
+#: .\templates\index.html:1087
+msgid "How to become a successful freelancer"
+msgstr "How to become a successful freelancer"
+
+#: .\templates\index.html:1102
+msgid "All posts"
+msgstr "All posts"

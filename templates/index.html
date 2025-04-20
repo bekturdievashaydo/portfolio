@@ -1,155 +1,84 @@
-﻿<!DOCTYPE html>
-{% load static %}
+﻿<!DOCTYPE html><!DOCTYPE html>
 <html lang="en">
-
-
-<!-- Mirrored from slimhamdi.net/istanbul/demos/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 Feb 2025 10:08:01 GMT -->
 <head>
     <meta charset="utf-8">
     <title>Istanbul - Personal Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Template Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
     <!-- Template CSS Files -->
     <link type="text/css" media="all" href="{% static 'demos/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link type="text/css" media="all" href="{% static 'demos/css/jquery.animatedheadline.css' %}" rel="stylesheet">
-    <link type="text/css" media="all" href="{% static 'demos/css/font-awesome.min.css' %}" rel="stylesheet">
     <link type="text/css" media="all" href="{% static 'demos/css/style.css' %}" rel="stylesheet">
     <link type="text/css" media="all" href="{% static 'demos/css/skins/blue.css' %}" rel="stylesheet">
 
     <!-- Template JS Files -->
     <script src="{% static 'demos/js/modernizr.js' %}"></script>
-
-    <!-- Live Style Switcher - demo only -->
-    <link rel="alternate stylesheet" type="text/css" title="blue" href="{% static 'demos/css/skins/blue.css' %}"/>
-    <link rel="alternate stylesheet" type="text/css" title="goldenrod"
-          href="{% static 'demos/css/skins/goldrenrod.css' %}"/>
-    <link rel="alternate stylesheet" type="text/css" title="green" href="{% static 'demos/css/skins/green.css' %}"/>
-    <link rel="alternate stylesheet" type="text/css" title="magenta" href="{% static 'demos/css/skins/magenta.css' %}"/>
-    <link rel="alternate stylesheet" type="text/css" title="orange" href="{% static 'demos/css/skins/orange.css' %}"/>
-    <link rel="alternate stylesheet" type="text/css" title="red" href="{% static 'demos/css/skins/red.css' %}"/>
-    <link rel="alternate stylesheet" type="text/css" title="yellow" href="{% static 'demos/css/skins/yellow.css' %}"/>
-    <link rel="alternate stylesheet" type="text/css" title="yellowgreen"
-          href="{% static 'demos/css/skins/yellowgreen.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'demos/css/styleswitcher.css' %}"/>
-
 </head>
-
 <body class="dark bgimage">
 <div class="page">
-    <!-- Live Style Switcher Starts - demo only -->
-    <div id="switcher" class="">
-        <div class="content-switcher">
-            <h4>STYLE SWITCHER</h4>
-            <ul>
-                <li>
-                    <a href="#" onclick="setActiveStyleSheet('blue');" title="blue" class="color"><img
-                            src="{% static 'demos/img/styleswitcher/blue.png' %}" alt="blue"/></a>
-                </li>
-                <li>
-                    <a href="#" onclick="setActiveStyleSheet('red');" title="red" class="color"><img
-                            src="{% static 'demos/img/styleswitcher/red.png' %}" alt="red"/></a>
-                </li>
-                <li>
-                    <a href="#" onclick="setActiveStyleSheet('goldenrod');" title="goldenrod" class="color"><img
-                            src="{% static 'demos/img/styleswitcher/goldenrod.png' %}" alt="goldenrod"/></a>
-                </li>
-                <li>
-                    <a href="#" onclick="setActiveStyleSheet('magenta');" title="magenta" class="color"><img
-                            src="{% static 'demos/img/styleswitcher/magenta.png' %}" alt="magenta"/></a>
-                </li>
-                <li>
-                    <a href="#" onclick="setActiveStyleSheet('yellowgreen');" title="yellowgreen" class="color"><img
-                            src="{% static 'demos/img/styleswitcher/yellowgreen.png' %}" alt="yellowgreen"/></a>
-                </li>
-                <li>
-                    <a href="#" onclick="setActiveStyleSheet('orange');" title="orange" class="color"><img
-                            src="{% static 'demos/img/styleswitcher/orange.png' %}" alt="orange"/></a>
-                </li>
-                <li>
-                    <a href="#" onclick="setActiveStyleSheet('green');" title="green" class="color"><img
-                            src="{% static 'demos/img/styleswitcher/green.png' %}" alt="green"/></a>
-                </li>
-                <li>
-                    <a href="#" onclick="setActiveStyleSheet('yellow');" title="yellow" class="color"><img
-                            src="{% static 'demos/img/styleswitcher/yellow.png' %}" alt="yellow"/></a>
-                </li>
-            </ul>
-
-            <br>
-
-            <a href="#" class="waves-effect waves-light btn font-weight-600 purchase hoverable"> <span><i
-                    class="fa fa-shopping-cart"></i> PURCHASE</span></a>
-            <div id="hideSwitcher">&times;</div>
+    <!-- Language Switcher Form -->
+    <form action="{% url 'set_language' %}" method="post">
+        {% csrf_token %}
+        <div class="language-switcher">
+            <button type="button" class="btn btn-primary" id="languageButton">{% trans 'Languages' %}</button>
+            <select name="language" id="languageSelect" onchange="this.form.submit()" style="display: none;">
+                <option value="en" {% if LANGUAGE_CODE == "en" %}selected{% endif %}>🇬🇧 English</option>
+                <option value="uz" {% if LANGUAGE_CODE == "uz" %}selected{% endif %}>🇺🇿 Uzbek</option>
+                <option value="ru" {% if LANGUAGE_CODE == "ru" %}selected{% endif %}>🇷🇺 Russian</option>
+            </select>
         </div>
-    </div>
-    <div id="showSwitcher" class="styleSecondColor"><i class="fa fa-cog fa-spin"></i></div>
-    <!-- Live Style Switcher Ends - demo only -->
+    </form>
+
     <!-- Header Starts -->
     <header id="header">
         <div class="nav-container">
             <div>
-                <!-- Mobile Navigation Starts -->
                 <ul id="nav" class="navigation">
                     <li class="active">
-                        <div>
-                            <a id="link-home" href="#home" class="active">
-                                <i class="fa fa-home"></i><span>Home</span>
-                            </a>
-                        </div>
+                        <div><a id="link-home" href="#home" class="active"><i class="fa fa-home"></i><span>{% trans 'Home' %}</span></a></div>
                     </li>
                     <li>
-                        <div>
-                            <a id="link-about" href="#about">
-                                <i class="fa fa-user"></i><span>About me</span>
-                            </a>
-                        </div>
+                        <div><a id="link-about" href="#about"><i class="fa fa-user"></i><span>{% trans 'About me' %}</span></a></div>
                     </li>
                     <li>
-                        <div>
-                            <a id="link-work" href="#work">
-                                <i class="fa fa-briefcase"></i><span>my Portfolio</span>
-                            </a>
-                        </div>
+                        <div><a id="link-work" href="#work"><i class="fa fa-briefcase"></i><span>{% trans 'My Portfolio' %}</span></a></div>
                     </li>
                     <li>
-                        <div>
-                            <a id="link-contact" href="#contact">
-                                <i class="fa fa-envelope-open"></i><span>Aloqaga chqish</span>
-                            </a>
-                        </div>
+                        <div><a id="link-contact" href="#contact"><i class="fa fa-envelope-open"></i><span>{% trans 'Get in Touch' %}</span></a></div>
                     </li>
                     <li>
-                        <div>
-                            <a id="link-blog" href="#blog">
-                                <i class="fa fa-comments"></i><span>Blog</span>
-                            </a>
-                        </div>
+                        <div><a id="link-blog" href="#blog"><i class="fa fa-comments"></i><span>{% trans 'Blog' %}</span></a></div>
                     </li>
                 </ul>
-                <!-- Mobile Navigation Ends -->
             </div>
         </div>
-        <!-- Stretchy Navigation Starts -->
-        <div class="cd-stretchy-nav">
-            <a class="cd-nav-trigger" href="#0">
-                <span aria-hidden="true"></span>
-            </a>
-            <ul class="stretchy-nav">
-                <li class="faol"><a href="#Bosh shahifa"><span>Bosh sahifa</span></a></li>
-                <li><a href="#haqida"><span>haqida</span></a></li>
-                <li><a href="#tugatilgan projectlar"><span>Portfolio</span></a></li>
-                <li><a href="#aloqa"><span>Bog'lanish</span></a></li>
-                <li><a href="#Blog"><span>Blog</span></a></li>
-            </ul>
-            <span aria-hidden="true" class="stretchy-nav-bg"></span>
-        </div>
-        <!-- Stretchy Navigation Ends -->
     </header>
+
+    <!-- Content Section Starts -->
+    <div class="content-section">
+        <button id="languageButton" class="btn btn-primary">{% trans 'Languages' %}</button>
+    </div>
+
+    <script>
+        // Tilni o'zgartirish uchun funksiya
+        let languageButton = document.getElementById('languageButton');
+        let languageSelect = document.getElementById('languageSelect');
+
+        // Tilni o'zgartirishni ochish yoki yopish
+        languageButton.addEventListener('click', function() {
+            if (languageSelect.style.display === "none" || languageSelect.style.display === "") {
+                languageSelect.style.display = "block";
+            } else {
+                languageSelect.style.display = "none";
+            }
+        });
+    </script>
+<
+
+
     <!-- Header Ends -->
     <!-- Main Content Starts -->
 
@@ -169,13 +98,13 @@
                         Men
                         <span class="ah-words-wrapper">
 							<b class="is-visible">Shaydo Bekturdiyeva</b>
-							<b>Backend dasturchi</b>
-                            <b>Mustaqil ishchi</b>
+							<b>{% trans 'Backend dasturchi' %}</b>
+                            <b>{% trans 'Mustaqil ishchi' %}</b>
 
 						</span>
                     </h1>
-                    <p>Men freelancer backend dasturchi sifatida ishlayman. Yaxshi tuzilgan kodlar va samarali tizimlar
-                        orqali kuchli va ishonchli veb-ilovalar yaratishga intilaman."</p>
+                    <p>{% blocktrans%}Men freelancer backend dasturchi sifatida ishlayman. Yaxshi tuzilgan kodlar va samarali tizimlar
+                        orqali kuchli va ishonchli veb-ilovalar yaratishga intilaman{% endblocktrans %}</p>
                     <div class="call-to-actions-home">
                         <div class="text-left">
                             <a href="#about" class="btn link-portfolio-one"><span><i class="fa fa-user"></i>more about me</span></a>
@@ -203,40 +132,40 @@
                         <div class="image-container">
                             <img class="img-fluid d-block" src="{% static 'demos/img/leftimage-dark.jpg' %}" alt=""/>
                         </div>
-                        <p class="d-block d-md-none">I'm a Freelance UI/UX Designer and Developer based in London,
+                        <p class="d-block d-md-none">{% blocktrans %}I'm a Freelance UI/UX Designer and Developer based in London,
                             England. I strives to build immersive and beautiful web applications through carefully
-                            crafted code and user-centric design.</p>
+                            crafted code and user-centric design.{% endblocktrans %}</p>
                     </div>
                     <div class="row col-xl-6 col-lg-6 col-md-12">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                             <ul class="list-1">
                                 <li>
-                                    <h6><span class="font-weight-600">Ism</span>Shaydo</h6>
+                                    <h6><span class="font-weight-600">{% blocktrans %}Ism{% endblocktrans %}</span>Shaydo</h6>
                                 </li>
                                 <li>
-                                    <h6><span class="font-weight-600">Familiya</span>Bekturdiyeva</h6>
+                                    <h6><span class="font-weight-600">{% blocktrans %}Familiya{% endblocktrans %}</span>Bekturdiyeva</h6>
                                 </li>
                                 <li>
-                                    <h6><span class="font-weight-600">Tug'ilgan sana</span>4 july 1990</h6>
+                                    <h6><span class="font-weight-600">{% blocktrans %}Tug'ilgan sana{% endblocktrans %}</span>4 july 1990</h6>
                                 </li>
                                 <li>
-                                    <h6><span class="font-weight-600">Millati</span>Uzbek</h6>
+                                    <h6><span class="font-weight-600">{% blocktrans %}Millati{% endblocktrans %}</span>Uzbek</h6>
                                 </li>
                                 <li>
-                                    <h6><span class="font-weight-600">Tajriba</span>7 yillik</h6>
+                                    <h6><span class="font-weight-600">{% blocktrans %}Tajriba{% endblocktrans %}</span>7 yillik</h6>
                                 </li>
                                 <li>
-                                    <h6><span class="font-weight-600">Manzil</span>Xorazm</h6>
+                                    <h6><span class="font-weight-600">{% blocktrans %}Manzil{% endblocktrans %}</span>Xorazm</h6>
                                 </li>
                             </ul>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                             <ul class="list-2">
                                 <li>
-                                    <h6><span class="font-weight-600">Mustaqil ishchi </span>Available</h6>
+                                    <h6><span class="font-weight-600">{% blocktrans %}Mustaqil ishchi{% endblocktrans %} </span>Available</h6>
                                 </li>
                                 <li>
-                                    <h6><span class="font-weight-600">Til</span>English,Uzbek</h6>
+                                    <h6><span class="font-weight-600">{% blocktrans %}Til{% endblocktrans %}</span>English,Uzbek</h6>
                                 </li>
                                 <li>
                                     <h6><span class="font-weight-600">Tel:</span>+95 539 83 89</h6>
@@ -251,7 +180,7 @@
                         </div>
                         <div class="col-12 resume-btn-container">
                             <a href="#" class="btn btn-resume"><span><i
-                                    class="fa fa-download"></i>Yuklab olish</span></a>
+                                    class="fa fa-download"></i>{% blocktrans %}Yuklab olish{% endblocktrans %}</span></a>
                         </div>
                     </div>
                     <!-- Personal Infos Ends -->
@@ -374,7 +303,7 @@
                 <!-- Main Heading Starts -->
                 <div class="container page-title text-center">
                     <h2 class="text-center">my <span>portfolio</span></h2>
-                    <span class="title-head-subtitle">a few recent design and coding projects. Want to see more? Email me.</span>
+                    <span class="title-head-subtitle">{% blocktrans %}a few recent design and coding projects. Want to see more? Email me.{% endblocktrans %}</span>
                 </div>
                 <!-- Main Heading Ends -->
                 <div class="portfolio-section">
@@ -387,7 +316,7 @@
                                     <a href="#0" data-type="project-1">
                                         <img src="{% static 'demos/img/projects/project-1.jpg' %}" alt="Project"
                                              class="img-fluid">
-                                        <div><span>Image Format</span>
+                                        <div><span>{% blocktrans %}Image Format{% endblocktrans %}</span>
                                         </div>
                                     </a>
                                 </li>
@@ -397,7 +326,7 @@
                                     <a href="#0" data-type="project-2">
                                         <img src="{% static 'demos/img/projects/project-2.jpg' %}" alt="Project"
                                              class="img-fluid">
-                                        <div><span>Youtube Format</span>
+                                        <div><span>{% blocktrans %}Youtube Format{% endblocktrans %}  </span>
                                         </div>
                                     </a>
                                 </li>
@@ -407,7 +336,7 @@
                                     <a href="#0" data-type="project-3">
                                         <img src="{% static 'demos/img/projects/project-8.jpg' %}" alt="Project"
                                              class="img-fluid">
-                                        <div><span>Slider Format</span>
+                                        <div><span>{% blocktrans %}Sider Format{% endblocktrans %}</span>
                                         </div>
                                     </a>
                                 </li>
@@ -417,7 +346,7 @@
                                     <a href="#0" data-type="project-4">
                                         <img src="{% static 'demos/img/projects/project-6.jpg' %}" alt="Project"
                                              class="img-fluid">
-                                        <div><span>Video Format</span>
+                                        <div><span>{% blocktrans %}Video Format{% endblocktrans %}</span>
                                         </div>
                                     </a>
                                 </li>
@@ -427,7 +356,7 @@
                                     <a href="#0" data-type="project-5">
                                         <img src="{% static 'demos/img/projects/project-5.jpg' %}" alt="Project"
                                              class="img-fluid">
-                                        <div><span>Image Format</span>
+                                        <div><span>{% blocktrans %}Image Format{% endblocktrans %}</span>
                                         </div>
                                     </a>
                                 </li>
@@ -437,7 +366,7 @@
                                     <a href="#0" data-type="project-6">
                                         <img src="{% static 'demos/img/projects/project-4.jpg' %}" alt="Project"
                                              class="img-fluid">
-                                        <div><span>Image Format</span>
+                                        <div><span>{% blocktrans %}Image Format{% endblocktrans %}</span>
                                         </div>
                                     </a>
                                 </li>
@@ -447,7 +376,7 @@
                                     <a href="#0" data-type="project-7">
                                         <img src="{% static 'demos/img/projects/project-7.jpg' %}" alt="Project"
                                              class="img-fluid">
-                                        <div><span>Image Format</span>
+                                        <div><span>{% blocktrans %}Image Format{% endblocktrans %}</span>
                                         </div>
                                     </a>
                                 </li>
@@ -494,29 +423,29 @@
                         <h3 class="font-weight-600 uppercase">Image Format</h3>
                         <ul class="project-details">
                             <li><i class="fa fa-file-text-o"></i><span
-                                    class="font-weight-400 project-label"> Project </span>: <span
-                                    class="font-weight-600 uppercase">Website</span>
+                                    class="font-weight-400 project-label"> {% blocktrans %}Project{% endblocktrans %}</span>: <span
+                                    class="font-weight-600 uppercase">{% blocktrans %}Website{% endblocktrans %}</span>
                             </li>
                             <li><i class="fa fa-user-o"></i><span class="font-weight-400 project-label"> Client </span>:
-                                <span class="font-weight-600 uppercase">Envato</span>
+                                <span class="font-weight-600 uppercase">{% blocktrans %}Envato{% endblocktrans %}</span>
                             </li>
                             <li><i class="fa fa-hourglass-o"></i><span
-                                    class="font-weight-400 project-label"> Duration </span>: <span
-                                    class="font-weight-600 uppercase">3 months</span>
+                                    class="font-weight-400 project-label">{% blocktrans %} Duration {% endblocktrans %}</span>: <span
+                                    class="font-weight-600 uppercase">{% blocktrans %}3 months{% endblocktrans %}</span>
                             </li>
                             <li><i class="fa fa-code"></i> <span
-                                    class="font-weight-400 project-label"> Technologies</span> : <span
+                                    class="font-weight-400 project-label"> {% blocktrans %}Technologies{% endblocktrans %}</span> : <span
                                     class="font-weight-600 uppercase">html, javascript</span>
                             </li>
-                            <li><i class="fa fa-money"></i> <span class="font-weight-400 project-label"> Budget</span> :
+                            <li><i class="fa fa-money"></i> <span class="font-weight-400 project-label"> {% blocktrans %}Budget{% endblocktrans %}</span> :
                                 <span class="font-weight-600 uppercase">1550 USD</span>
                             </li>
                         </ul>
-                        <a href="#" class="btn"><span><i class="fa fa-external-link"></i>preview</span></a>
+                        <a href="#" class="btn"><span><i class="fa fa-external-link"></i>{% blocktrans %}preview{% endblocktrans %}</span></a>
                     </div>
                     <div class="col-6 p-none text-right">
                         <a href="#" class="btn btn-secondary close-project"><span><i
-                                class="fa fa-close"></i>Close</span></a>
+                                class="fa fa-close"></i>{% blocktrans %}Close{% endblocktrans %}</span></a>
                     </div>
                 </div>
                 <!-- Project Details Ends -->
@@ -536,11 +465,11 @@
                 <!-- Project Details Starts -->
                 <div class="projects-info row">
                     <div class="col-12 col-sm-6 p-none">
-                        <h3 class="font-weight-600 uppercase">Youtube Format</h3>
+                        <h3 class="font-weight-600 uppercase">{% blocktrans %}Youtube Format{% endblocktrans %}</h3>
                         <ul class="project-details">
                             <li><i class="fa fa-file-text-o"></i><span
-                                    class="font-weight-400 project-label"> Project </span>: <span
-                                    class="font-weight-600 uppercase">Website</span>
+                                    class="font-weight-400 project-label"> {% blocktrans %}Project{% endblocktrans %} </span>: <span
+                                    class="font-weight-600 uppercase">{% blocktrans %}Website{% endblocktrans %}</span>
                             </li>
                             <li><i class="fa fa-user-o"></i><span class="font-weight-400 project-label"> Client </span>:
                                 <span class="font-weight-600 uppercase">Envato</span>
@@ -635,7 +564,7 @@
                 <div class="project-info-main-content">
                     <video id="video" class="responsive-video" controls
                            poster="{% static 'demos/img/projects/project-6.jpg' %}">
-                        <source src="{% static 'demos/img/projects/video.mp4" type="video/mp4">
+                        <source src="{% static 'demos/img/projects/video.mp4' %}" type="video/mp4">
                     </video>
                 </div>
                 <!-- Main Content Ends -->
@@ -922,7 +851,7 @@
                             <!-- Social Media Profiles Starts -->
 
                             <div class="social">
-                                <h6 class="font-weight-600 uppercase">Ijtimoiy tarmoq profillari </h6>
+                                <h6 class="font-weight-600 uppercase">{% blocktrans %}Ijtimoiy tarmoq profillari{% endblocktrans %} </h6>
                                 <ul class="list-inline social social-intro text-center p-none">
                                     <li class="facebook"><a title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
                                     </li>
@@ -938,11 +867,11 @@
                         </div>
                         <!-- Contact Infos Ends -->
                         <!-- Contact Form Starts -->
-                        <div class="col-12 col-md-8 col-xl-8 rightside">
+  <div class="col-12 col-md-8 col-xl-8 rightside">
                             <p>
-                                Agar sizda biron-bir taklif, loyiha g‘oyasi bo‘lsa yoki shunchaki salom aytmoqchi
+                               {% blocktrans %} Agar sizda biron-bir taklif, loyiha g‘oyasi bo‘lsa yoki shunchaki salom aytmoqchi
                                 bo‘lsangiz, quyidagini to'ldiring
-                                men tez orada sizga javob beraman!
+                                men tez orada sizga javob beraman!{% endblocktrans %}
                             </p>
                             <form class="contactform" method="post"
                                   action="https://slimhamdi.net/istanbul/demos/php/process-form.php">
@@ -969,7 +898,7 @@
                                 <!-- Submit Form Button Starts -->
                                 <div class="submit-form">
                                     <button class="btn button-animated" type="submit" name="send"><span><i
-                                            class="fa fa-send"></i> Send Message</span></button>
+                                            class="fa fa-send"></i> Xabar yuborish </span></button>
                                 </div>
                                 <!-- Submit Form Button Ends -->
                                 <div class="form-message"><span
@@ -977,18 +906,17 @@
                                 </div>
                             </form>
                         </div>
-                        <!-- Contact Form Ends -->
-
+                        <!-- Contact Form Ends -- >
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Contact Section Ends -->
+        Contact Section Ends -->
         <!-- Blog Section Starts -->
         <section id="blog">
             <div class="container page-title text-center">
                 <h2 class="text-center">latest <span>posts</span></h2>
-                <span class="title-head-subtitle">tips, insights, and best practices about web design and developpment</span>
+                <span class="title-head-subtitle">{% blocktrans %}tips, insights, and best practices about web design and developpment{% endblocktrans %}</span>
             </div>
             <div class="container">
                 <div class="row">
@@ -1006,7 +934,7 @@
                             </figure>
                             <!-- Figure Ends -->
                             <a href="blog-post.html">
-                                <h4>create a wordpress theme from scratch</h4>
+                                <h4>{% blocktrans %}create a wordpress theme from scratch{% endblocktrans %}</h4>
                             </a>
                             <!-- Excerpt Starts -->
                             <div class="blog-excerpt">
@@ -1032,7 +960,7 @@
                             </figure>
                             <!-- Figure Ends -->
                             <a href="blog-post.html">
-                                <h4>Effective Marketing Strategy tips</h4>
+                                <h4>{% blocktrans %}Effective Marketing Strategy tips{% endblocktrans %}</h4>
                             </a>
                             <!-- Excerpt Starts -->
                             <div class="blog-excerpt">
@@ -1058,7 +986,7 @@
                             </figure>
                             <!-- Figure Ends -->
                             <a href="blog-post.html">
-                                <h4>free psd and sketch ressouces</h4>
+                                <h4>{% blocktrans %}free psd and sketch ressouces{% endblocktrans %}</h4>
                             </a>
                             <!-- Excerpt Starts -->
                             <div class="blog-excerpt">
@@ -1084,7 +1012,7 @@
                             </figure>
                             <!-- Figure Ends -->
                             <a href="blog-post.html">
-                                <h4>How to become a successful freelancer</h4>
+                                <h4>{% blocktrans %}How to become a successful freelancer{% endblocktrans %}</h4>
                             </a>
                             <!-- Excerpt Starts -->
                             <div class="blog-excerpt">
@@ -1099,7 +1027,7 @@
                     <!-- Link To Blog Starts -->
                     <div class="col-12 col-sm-12 col-md-12 col-xl-12 col-lg-12 allposts"><a href="blog.html"
                                                                                             class="btn btn-secondary"><span><i
-                            class="fa fa-comments"></i>All posts</span></a>
+                            class="fa fa-comments"></i>{% blocktrans %}All posts{% endblocktrans %}</span></a>
                     </div>
                     <!-- Link To Blog Ends -->
                 </div>
