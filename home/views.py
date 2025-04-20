@@ -1,6 +1,59 @@
 from django.shortcuts import render
-from rest_framework.views import APIView
-from .serializer import
+from django.core.mail import send_mail
+from django.conf import settings
+from django.http import HttpResponse
+from django.shortcuts import  redirect
+from .forms import ContactForm
+from django.utils.translation import activate
+
+def switch_language(request):
+    lang = request.POST.get('language', 'en')
+    activate(lang)
+    response = redirect(request.META.get('HTTP_REFERER', '/'))
+    response.set_cookie('django_language', lang)
+    return response
+
+
+
+def send_email(request):
+    text = 'hello there is a test email'
+    email = 'gudr901@gmail.com'
+    subject = "TestEmail"
+
+    send_mail(
+        subject,
+        text,
+        settings.EMAIL_HOST_USER,
+        [email],
+        fail_silently=False
+    )
+
+    return HttpResponse("Email sent successfully!")
+
+
+
+
+def contact_view(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            contact = form.save()  # Bazaga saqlash
+
+            # Email yuborish
+            send_mail(
+                subject=f"Yangi xabar: {contact.name}",
+                message=f"Ism: {contact.name}\nEmail: {contact.email}\nXabar: {contact.message}",
+                from_email='bekturdiyevashaydo9@gmail.com',
+                recipient_list=['bekturdiyevashaydo9@gmail.com'],
+                fail_silently=False,
+            )
+
+            return redirect('success_page')
+    else:
+        form = ContactForm()
+
+    return render(request, 'contact.html', {'form': form})
+
 
 # Create your views here.
 def home_view(request):
